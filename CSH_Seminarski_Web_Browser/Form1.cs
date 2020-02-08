@@ -14,15 +14,14 @@ namespace CSH_Seminarski_Web_Browser
     public partial class Form1 : Form
     {
         private string placeholder; 
-        private List<string> history;
-        private int historyIndex;
+        private HashSet<string> history;
 
         public Form1()
         {
             InitializeComponent();
 
             placeholder = "http://";
-            history = new List<string>();
+            history = new HashSet<string>();
             historyIndex = -1;
 
             textBoxURL.Text = placeholder;
@@ -101,6 +100,11 @@ namespace CSH_Seminarski_Web_Browser
         {
             webBrowser.Navigate(textBoxURL.Text);
             history.Add(textBoxURL.Text);
+            foreach (string item in history)
+            {
+                historyToolStripMenuItem.DropDownItems.Add(item);
+            }
+
         }
 
     }
