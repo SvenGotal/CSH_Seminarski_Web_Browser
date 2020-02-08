@@ -39,11 +39,12 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.favoritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.favoritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -128,7 +129,9 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.historyToolStripMenuItem,
+            this.favoritesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1239, 33);
@@ -140,7 +143,6 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newProfileToolStripMenuItem,
             this.selectProfileToolStripMenuItem,
-            this.favoritesToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
@@ -157,12 +159,6 @@
             this.selectProfileToolStripMenuItem.Name = "selectProfileToolStripMenuItem";
             this.selectProfileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
             this.selectProfileToolStripMenuItem.Text = "&Select profile";
-            // 
-            // favoritesToolStripMenuItem
-            // 
-            this.favoritesToolStripMenuItem.Name = "favoritesToolStripMenuItem";
-            this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
-            this.favoritesToolStripMenuItem.Text = "&Favorites";
             // 
             // exitToolStripMenuItem
             // 
@@ -190,6 +186,18 @@
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
             this.versionToolStripMenuItem.Size = new System.Drawing.Size(172, 34);
             this.versionToolStripMenuItem.Text = "&Version";
+            // 
+            // historyToolStripMenuItem
+            // 
+            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
+            this.historyToolStripMenuItem.Text = "&History";
+            // 
+            // favoritesToolStripMenuItem
+            // 
+            this.favoritesToolStripMenuItem.Name = "favoritesToolStripMenuItem";
+            this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
+            this.favoritesToolStripMenuItem.Text = "&Favorites";
             // 
             // Form1
             // 
@@ -222,13 +230,14 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button buttonFavoritesAdd;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
         private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
     }
 }
 

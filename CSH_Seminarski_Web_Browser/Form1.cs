@@ -100,6 +100,7 @@ namespace CSH_Seminarski_Web_Browser
         private void Navigate()
         {
             webBrowser.Navigate(textBoxURL.Text);
+            history.Add(textBoxURL.Text);
         }
 
     }
