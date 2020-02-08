@@ -45,6 +45,7 @@
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.favoritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelUser = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             // textBoxURL
             // 
-            this.textBoxURL.Location = new System.Drawing.Point(259, 21);
+            this.textBoxURL.Location = new System.Drawing.Point(187, 21);
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(600, 26);
             this.textBoxURL.TabIndex = 1;
@@ -73,7 +74,7 @@
             // 
             this.labelURL.AutoSize = true;
             this.labelURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelURL.Location = new System.Drawing.Point(197, 22);
+            this.labelURL.Location = new System.Drawing.Point(125, 22);
             this.labelURL.Name = "labelURL";
             this.labelURL.Size = new System.Drawing.Size(56, 25);
             this.labelURL.TabIndex = 2;
@@ -81,9 +82,9 @@
             // 
             // buttonGO
             // 
-            this.buttonGO.Location = new System.Drawing.Point(876, 17);
+            this.buttonGO.Location = new System.Drawing.Point(809, 17);
             this.buttonGO.Name = "buttonGO";
-            this.buttonGO.Size = new System.Drawing.Size(156, 35);
+            this.buttonGO.Size = new System.Drawing.Size(55, 35);
             this.buttonGO.TabIndex = 3;
             this.buttonGO.Text = "GO!";
             this.buttonGO.UseVisualStyleBackColor = true;
@@ -94,6 +95,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.labelUser);
             this.panel1.Controls.Add(this.buttonBack);
             this.panel1.Controls.Add(this.buttonFavoritesAdd);
             this.panel1.Controls.Add(this.buttonGO);
@@ -106,9 +108,9 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(21, 21);
+            this.buttonBack.Location = new System.Drawing.Point(15, 19);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(131, 31);
+            this.buttonBack.Size = new System.Drawing.Size(94, 31);
             this.buttonBack.TabIndex = 5;
             this.buttonBack.Text = "Go Back";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -116,7 +118,7 @@
             // 
             // buttonFavoritesAdd
             // 
-            this.buttonFavoritesAdd.Location = new System.Drawing.Point(1038, 17);
+            this.buttonFavoritesAdd.Location = new System.Drawing.Point(879, 17);
             this.buttonFavoritesAdd.Name = "buttonFavoritesAdd";
             this.buttonFavoritesAdd.Size = new System.Drawing.Size(156, 35);
             this.buttonFavoritesAdd.TabIndex = 4;
@@ -151,20 +153,22 @@
             // newProfileToolStripMenuItem
             // 
             this.newProfileToolStripMenuItem.Name = "newProfileToolStripMenuItem";
-            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.newProfileToolStripMenuItem.Text = "&New profile";
+            this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
             // selectProfileToolStripMenuItem
             // 
             this.selectProfileToolStripMenuItem.Name = "selectProfileToolStripMenuItem";
-            this.selectProfileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.selectProfileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.selectProfileToolStripMenuItem.Text = "&Select profile";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -198,6 +202,15 @@
             this.favoritesToolStripMenuItem.Name = "favoritesToolStripMenuItem";
             this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.favoritesToolStripMenuItem.Text = "&Favorites";
+            // 
+            // labelUser
+            // 
+            this.labelUser.AutoSize = true;
+            this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUser.Location = new System.Drawing.Point(1072, 26);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(0, 29);
+            this.labelUser.TabIndex = 6;
             // 
             // Form1
             // 
@@ -238,6 +251,7 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
+        private System.Windows.Forms.Label labelUser;
     }
 }
 

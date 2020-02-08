@@ -69,7 +69,7 @@ namespace CSH_Seminarski_Web_Browser
         private void buttonFavoritesAdd_Click(object sender, EventArgs e)
         {
 
-
+            
 
         }
 
@@ -127,5 +127,15 @@ namespace CSH_Seminarski_Web_Browser
             await Task.Delay(miliseconds);
         }
 
+        private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddUser form = new AddUser();
+            form.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
