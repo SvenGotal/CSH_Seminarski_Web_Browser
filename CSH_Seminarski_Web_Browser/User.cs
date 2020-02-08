@@ -1,11 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CSH_Seminarski_Web_Browser
 {
+
+    static class Extensions
+    {
+        public static List<T> Clone<T>(this List<T> source) where T : ICloneable
+        {
+            List<T> clone = new List<T>();
+            foreach (T fav in source)
+            {
+                clone.Add(fav);
+            }
+            return clone;
+        }
+
+    }
+
+
     class User
     {
         private string name;
@@ -18,30 +36,86 @@ namespace CSH_Seminarski_Web_Browser
             {
                 return name;
             }
-            set 
-            {
-
-            } 
         }
-        public string LastName { get; set; }
-        //public List<string> Favorites 
-        
-        //{ 
-        //    get
-        //    {
-        //        return favorites.cl
-        //    }
-        //}
+        public string LastName 
+        {
+            get
+            {
+                return lname;
+            }
+        }
+        public List<string> Favorites
 
-        //public static IList<T> Clone(this IList<T> source) 
-        //{
-        //    List<T> clone = new List<T>();
-        //    foreach (var fav in source)
-        //    {
-        //        clone.Add(fav);
-        //    }
-        //    return clone;
-        //}
+        {
+            get
+            {
+                return favorites.Clone<string>();
+            }
+        }
+
+        public User(string name, string lname)
+        {
+            this.name = name;
+            this.lname = lname;
+
+            createHistory();
+            createFavorites();
+
+        }
+
+        public bool AddUserHistory()
+        {
+            return true;
+        }
+
+        public bool ReadUserHistory()
+        {
+            return true;
+        }
+
+
+        public bool AddUserFavorites()
+        {
+            return true;
+        }
+
+        public bool ReadUserFavorites()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Creates the .xml file for Favorites for this user.
+        /// </summary>
+        /// <returns>True if file did not exist previously</returns>
+        private bool createFavorites()
+        {
+            string filename_favs = name + ".xml";
+
+            if (!File.Exists(filename_favs))
+            {
+                XmlWriter xwriter = XmlWriter.Create(filename_favs);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Creates the .xml file for History for this user.
+        /// </summary>
+        /// <returns>True if file did not exist previously</returns>
+        private bool createHistory()
+        {
+            string filename_hist = name + "_history.xml";
+
+            if (!File.Exists(filename_hist))
+            {
+                XmlWriter xwriter = XmlWriter.Create(filename_hist);
+                return true;
+            }
+            return false;
+        }
+
 
     }
 }
