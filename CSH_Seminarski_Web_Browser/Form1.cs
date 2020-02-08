@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Xml;
+using System.Xml.Linq;
 
 namespace CSH_Seminarski_Web_Browser
 {
@@ -22,7 +23,6 @@ namespace CSH_Seminarski_Web_Browser
 
             placeholder = "http://";
             history = new HashSet<string>();
-            historyIndex = -1;
 
             textBoxURL.Text = placeholder;
             textBoxURL.GotFocus += TextBoxURL_GotFocus;
@@ -68,7 +68,9 @@ namespace CSH_Seminarski_Web_Browser
 
         private void buttonFavoritesAdd_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
+
+
         }
 
 
@@ -98,13 +100,31 @@ namespace CSH_Seminarski_Web_Browser
         /// </summary>
         private void Navigate()
         {
-            webBrowser.Navigate(textBoxURL.Text);
-            history.Add(textBoxURL.Text);
-            foreach (string item in history)
+            try
             {
-                historyToolStripMenuItem.DropDownItems.Add(item);
+                historyToolStripMenuItem.DropDownItems.Clear();
+
+                webBrowser.Navigate(textBoxURL.Text);
+
+
+                textBoxURL.Text = webBrowser.Url.ToString();
+                history.Add(webBrowser.Url.ToString());
+                foreach (string item in history)
+                {
+                    historyToolStripMenuItem.DropDownItems.Add(item);
+
+                }
+            }
+            catch(Exception e)
+            {
+
             }
 
+        }
+
+        private async Task delayTask(int miliseconds)
+        {
+            await Task.Delay(miliseconds);
         }
 
     }
