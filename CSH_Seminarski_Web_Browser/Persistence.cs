@@ -85,7 +85,7 @@ namespace CSH_Seminarski_Web_Browser
                     
 
                     XElement fav = doc.Element("Favorites");
-                    fav.Add(new XElement("Favorite", new XElement("Url", favorite.Url), new XElement("Last", favorite.Description)));
+                    fav.Add(new XElement("Favorite", new XElement("Url", favorite.Url), new XElement("Name", favorite.Description)));
 
                     doc.Save(filename);
 
@@ -150,7 +150,11 @@ namespace CSH_Seminarski_Web_Browser
                 doc = XDocument.Load(filename);
 
                 var query = from favs in doc.Descendants("Favorite")
-                            select new Favorite(favs.Element("Url").Value, favs.Element("Name").Value);
+                            select new Favorite
+                            {
+                                Url = (string)favs.Element("Url"), 
+                                Description = (string)favs.Element("Name")
+                            };
 
                 foreach (Favorite favorite in query)
                 {
