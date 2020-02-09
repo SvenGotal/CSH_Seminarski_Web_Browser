@@ -12,9 +12,13 @@ using System.Xml.Linq;
 
 namespace CSH_Seminarski_Web_Browser
 {
+
+    //TODO NoteToSelf: For users logins use DB, not .xml
+    //TODO NoteToSelf: Expand User class with password.
+
     public partial class Form1 : Form
     {
-        private string placeholder; 
+        private readonly string placeholder; 
         public User CurrentUser;
 
         public Form1()
@@ -49,8 +53,6 @@ namespace CSH_Seminarski_Web_Browser
                 textBoxURL.Text = "";
             }
         }
-
-
         private void buttonGO_Click(object sender, EventArgs e)
         {
             navigate();
@@ -73,89 +75,31 @@ namespace CSH_Seminarski_Web_Browser
         {
             webBrowser.GoForward();
         }
-
-
         private void buttonFavoritesAdd_Click(object sender, EventArgs e)
         {
             AddFavorite add = new AddFavorite(this);
             add.Show();
         }
-
-
-        private List<Favorite> loadCurrentUserFavorites()
-        {
-
-            string filename = CurrentUser.Name + "_favorites.xml";
-            return Persistence.ReadFavorites(filename);
-            
-        }
-
-
-        /*********************************************************************************************/
-        /* Helper methods */
-
-        /// <summary>
-        /// Checks if the key entered equals the desired key.
-        /// </summary>
-        /// <param name="key">Input key</param>
-        /// <param name="chosenKey">Desired key</param>
-        /// <returns>True if key equals desired key.</returns>
-        private bool validateKey(KeyEventArgs key, Keys chosenKey)
-        {
-            return key.KeyCode == chosenKey;
-        }
-
-        /// <summary>
-        /// Navigates the webBrowser control to the desired URL
-        /// </summary>
-        private void navigate()
-        {
-            try
-            {
-                historyToolStripMenuItem.DropDownItems.Clear();
-
-                webBrowser.Navigate(textBoxURL.Text);
-            }
-            catch(Exception ex)
-            {
-
-            }
-
-        }
-
-        private void refresh()
-        {
-
-            webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;
-
-        }
-
         private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             string url = webBrowser.Url.ToString();
             textBoxURL.Text = url;
 
         }
-
-
-
         private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddUser form = new AddUser();
             form.Show();
         }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void selectProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UsersSelect form = new UsersSelect();
             form.Show();
         }
-
         private void favoritesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             favoritesToolStripMenuItem.DropDownItems.Clear();
@@ -170,18 +114,7 @@ namespace CSH_Seminarski_Web_Browser
             }
 
         }
-        public void UpdateCurrentUserFavorites()
-        {
-            try
-            {
-                CurrentUser.Favorites = loadCurrentUserFavorites();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void menu_Click(object sender , EventArgs e)
+        private void menu_Click(object sender, EventArgs e)
         {
             var menuItem = sender as ToolStripMenuItem;
             var menuText = menuItem.Text;
@@ -191,26 +124,81 @@ namespace CSH_Seminarski_Web_Browser
             refresh();
 
         }
-
-
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO 
-            comingSoon();
+            //TODO reserved for v.1.2.
+            ComingSoon();
         }
-        public void comingSoon()
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ComingSoon();
+        }
+        private void versionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ComingSoon();
+        }
+
+
+
+        /*********************************************************************************************/
+        /* Helper methods */
+
+        /// <summary>
+        /// Updates the loged in user's favorites.
+        /// </summary>
+        public void UpdateCurrentUserFavorites()
+        {
+            try
+            {
+                CurrentUser.Favorites = loadCurrentUserFavorites();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        /// <summary>
+        /// Displays the "Coming soon" message.
+        /// </summary>
+        public void ComingSoon()
         {
             MessageBox.Show("Coming soon!!!");
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        /* Private internals */
+        private List<Favorite> loadCurrentUserFavorites()
         {
-            comingSoon();
+
+            string filename = CurrentUser.Name + "_favorites.xml";
+            return Persistence.ReadFavorites(filename);
+
+        }
+        private bool validateKey(KeyEventArgs key, Keys chosenKey)
+        {
+            return key.KeyCode == chosenKey;
+        }
+        private void navigate()
+        {
+            try
+            {
+                historyToolStripMenuItem.DropDownItems.Clear();
+
+                webBrowser.Navigate(textBoxURL.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void refresh()
+        {
+
+            webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;
+
         }
 
-        private void versionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            comingSoon();
-        }
     }
 }

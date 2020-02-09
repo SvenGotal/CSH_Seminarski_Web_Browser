@@ -16,7 +16,7 @@ namespace CSH_Seminarski_Web_Browser
 
         /* Write to xml functionalities */
         /// <summary>
-        /// Writers the user in specified format to desired filename, if user already exists it adds user to the specified .xml format.
+        /// Writes the user in specified format to desired filename, if user already exists it adds user to the specified .xml format.
         /// </summary>
         /// <param name="filename">Path to filename, .xml.</param>
         /// <param name="usr">User to write</param>
@@ -39,12 +39,18 @@ namespace CSH_Seminarski_Web_Browser
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
+        /// <summary>
+        /// Writes the history entry in specified format to desired filename.
+        /// </summary>
+        /// <param name="filename">Path to filename, .xml.</param>
+        /// <param name="history">Entry to write</param>
+        /// <returns>True if the method succeeds writing the entry, false if method fails to write entry to .xml file.</returns>
         public static bool WriteHistory(string filename, string history)
         {
             XDocument doc;
@@ -63,13 +69,19 @@ namespace CSH_Seminarski_Web_Browser
                 doc.Save(filename);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
 
             return true;
         }
+        /// <summary>
+        /// Writes the favorite entry into .xml file.
+        /// </summary>
+        /// <param name="filename">Path to file.</param>
+        /// <param name="favorite">Favorite entry to be written.</param>
+        /// <returns>True if entry is successfully entered.</returns>
         public static bool WriteFavorite(string filename, Favorite favorite)
         {
             XDocument doc;
@@ -88,11 +100,11 @@ namespace CSH_Seminarski_Web_Browser
                     fav.Add(new XElement("Favorite", new XElement("Url", favorite.Url), new XElement("Name", favorite.Description)));
 
                     doc.Save(filename);
-
+                    return true;
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -102,11 +114,23 @@ namespace CSH_Seminarski_Web_Browser
 
 
         /* Read from xml functionalities */
+        /// <summary>
+        /// Reads from specified .xml file all entries. 
+        /// </summary>
+        /// <param name="filename">Path to filename to read from.</param>
+        /// <returns>If reading is successful the the List\<Favorite\> is returned.</Favorite></returns>
         public static List<string> ReadHistory(string filename)
         {
-            //TODO reserved for varsion 1.2.
+            //TODO reserved for v.1.2.
             throw new NotImplementedException();
         }
+        /// <summary>
+        /// Reads the specified file that contains users.
+        /// </summary>
+        /// <param name="filename">Path to file</param>
+        /// <param name="usrname">Search by name</param>
+        /// <param name="usrlast">Search by last name</param>
+        /// <returns>Returns the User if found.</returns>
         public static User ReadUser(string filename, string usrname, string usrlast)
         {
             appendDotXmlIfNotPresent(ref filename);
@@ -128,17 +152,27 @@ namespace CSH_Seminarski_Web_Browser
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
             return usr;
         }
-        public static bool ReadUsersAll(string filename)
+        /// <summary>
+        /// Reads all User entries from specified file.
+        /// </summary>
+        /// <param name="filename">Path to file to be read.</param>
+        /// <returns>List of users found within the file.</returns>
+        public static List<User> ReadUsersAll(string filename)
         {
             //TODO reserved for v.1.2.
             throw new NotImplementedException();
         }
+        /// <summary>
+        /// Reads all Favorite entries from specified file.
+        /// </summary>
+        /// <param name="filename">Path to file</param>
+        /// <returns>List of Favorites read from file.</returns>
         public static List<Favorite> ReadFavorites(string filename)
         {
             List<Favorite> favorites = new List<Favorite>();
@@ -162,7 +196,7 @@ namespace CSH_Seminarski_Web_Browser
                 }
 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return null;
             }
@@ -187,7 +221,7 @@ namespace CSH_Seminarski_Web_Browser
                     return true;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -195,7 +229,6 @@ namespace CSH_Seminarski_Web_Browser
         }
         private static bool validateHistoryInHistory(XDocument doc, string history)
         {
-            bool flag = false;
             try
             {
                 var query = from fav in doc.Descendants("Url")
@@ -206,11 +239,11 @@ namespace CSH_Seminarski_Web_Browser
                     return true;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return flag;
+                return false;
             }
-            return flag;
+            return false;
         }
         private static bool validateFavoriteInFavorites(XDocument doc, Favorite favorite)
         {
@@ -224,7 +257,7 @@ namespace CSH_Seminarski_Web_Browser
                     return true;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

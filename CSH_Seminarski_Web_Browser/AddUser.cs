@@ -17,15 +17,17 @@ namespace CSH_Seminarski_Web_Browser
             InitializeComponent();
         }
 
+
+        /* Private internals and handlers */
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            //TODO
-            comingSoon();
+            //TODO reserved for v.1.2.
+
+            ComingSoon();
             //string name = textBoxName.Text;
             //string last = textBoxLast.Text;
 
@@ -39,7 +41,7 @@ namespace CSH_Seminarski_Web_Browser
             //}
 
         }
-        public void comingSoon()
+        public void ComingSoon()
         {
             MessageBox.Show("Coming soon!!!");
         }

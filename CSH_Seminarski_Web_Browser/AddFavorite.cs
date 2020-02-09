@@ -17,8 +17,8 @@ namespace CSH_Seminarski_Web_Browser
             InitializeComponent();
         }
 
-        private Form1 mainForm;
-        private string placeholder;
+        private readonly Form1 mainForm;
+        private readonly string placeholder;
         public AddFavorite(Form mainForm)
         {
             this.mainForm = mainForm as Form1;
@@ -32,7 +32,7 @@ namespace CSH_Seminarski_Web_Browser
                 textBoxUrl.LostFocus += TextBoxUrl_LostFocus;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 placeholder = "";
             }
@@ -40,22 +40,20 @@ namespace CSH_Seminarski_Web_Browser
 
         }
 
+        /* Private internals and handlers */
         private void TextBoxUrl_LostFocus(object sender, EventArgs e)
         {
             if(string.IsNullOrWhiteSpace(textBoxUrl.Text))
                 textBoxUrl.Text = placeholder;
         }
-
         private void TextBoxUrl_GotFocus(object sender, EventArgs e)
         {
             textBoxUrl.Text = "";
         }
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void buttonOk_Click(object sender, EventArgs e)
         {
             try
