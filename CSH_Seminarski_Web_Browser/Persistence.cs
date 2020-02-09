@@ -12,36 +12,47 @@ namespace CSH_Seminarski_Web_Browser
     public static class Persistence
     {
 
-        public static bool ReadUsersAll(string filename)
-        {
-            //TODO reserved for v.1.2.
-            throw new NotImplementedException();
-        }
 
 
-        public static List<string> ReadFavorites(string filename)
+        /* Write functionalities */
+        /// <summary>
+        /// Writers the user in specified format to desired filename, if user already exists it adds user to the specified .xml format.
+        /// </summary>
+        /// <param name="filename">Path to filename, .xml.</param>
+        /// <param name="usr">User to write</param>
+        /// <returns>True if the method succeeds or user already exists, false if method fails to write user to .xml file.</returns>
+        public static bool WriteUser(string filename, User usr)
         {
-            throw new NotImplementedException();
-        }
-        public static bool WriteFavorite(string filename, string favorite)
-        {
-            throw new NotImplementedException();
-        }
-        public static List<string> ReadHistory(string filename)
-        {
-            //TODO reserved for varsion 1.2.
-            throw new NotImplementedException();
-        }
-        public static bool WriteHistory(string filename, string history)
-        {
-
-            appendDotXmlIfNotPresent(ref filename);
-
             XDocument doc;
+            appendDotXmlIfNotPresent(ref filename);
 
             try
             {
-                formatHistoryIfNotExist(filename, history);
+                doc = XDocument.Load(filename);
+
+                if (!formatUsersIfNotExist(filename, usr))
+                {
+                    XElement user = doc.Element("Users");
+                    user.Add(new XElement("User", new XElement("Name", usr.Name), new XElement("Last", usr.LastName)));
+
+                    doc.Save(filename);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+        public static bool WriteHistory(string filename, string history)
+        {
+            XDocument doc;
+            appendDotXmlIfNotPresent(ref filename);
+
+            try
+            {
+                formatHistoryIfNotExist(filename);
 
                 doc = XDocument.Load(filename);
 
@@ -58,6 +69,43 @@ namespace CSH_Seminarski_Web_Browser
             }
 
             return true;
+        }
+        public static bool WriteFavorite(string filename, Favorite favorite)
+        {
+            XDocument doc;
+            appendDotXmlIfNotPresent(ref filename);
+
+            try
+            {
+                formatFavoritesIfNotExist(filename);
+                doc = XDocument.Load(filename);
+
+                if (!validateFavoriteInFavorites(doc, favorite))
+                {
+                    
+
+                    XElement fav = doc.Element("Favorites");
+                    fav.Add(new XElement("Favorite", new XElement("Url", favorite.Url), new XElement("Last", favorite.Description)));
+
+                    doc.Save(filename);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return false;
+        }
+
+
+
+        /* Read functionalities */
+        public static List<string> ReadHistory(string filename)
+        {
+            //TODO reserved for varsion 1.2.
+            throw new NotImplementedException();
         }
         public static User ReadUser(string filename, string usrname, string usrlast)
         {
@@ -86,39 +134,19 @@ namespace CSH_Seminarski_Web_Browser
             }
             return usr;
         }
-        /// <summary>
-        /// Writers the user in specified format to desired filename, if user already exists it adds user to the specified .xml format.
-        /// </summary>
-        /// <param name="filename">Path to filename, .xml.</param>
-        /// <param name="usr">User to write</param>
-        /// <returns>True if the method succeeds or user already exists, false if method fails to write user to .xml file.</returns>
-        public static bool WriteUser(string filename, User usr)
+        public static bool ReadUsersAll(string filename)
         {
-            appendDotXmlIfNotPresent(ref filename);
-
-            XDocument doc;
-            try
-            {
-                formatUsersIfNotExist(filename, usr);
-
-                doc = XDocument.Load(filename);
-
-                if (!validateUserInUsers(doc, usr))
-                {
-                    XElement user = doc.Element("Users");
-                    user.Add(new XElement("User", new XElement("Name", usr.Name), new XElement("Last", usr.LastName)));
-
-                    doc.Save(filename);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
+            //TODO reserved for v.1.2.
+            throw new NotImplementedException();
+        }
+        public static List<string> ReadFavorites(string filename)
+        {
+            throw new NotImplementedException();
         }
 
+
+
+        /* Validation methods */
         private static bool validateUserInUsers(XDocument doc, User usr)
         {
             try
@@ -138,7 +166,7 @@ namespace CSH_Seminarski_Web_Browser
             }
             return false;
         }
-        private static bool validateHistory(XDocument doc, string history)
+        private static bool validateHistoryInHistory(XDocument doc, string history)
         {
             bool flag = false;
             try
@@ -157,10 +185,48 @@ namespace CSH_Seminarski_Web_Browser
             }
             return flag;
         }
-        private static void formatUsersIfNotExist(string filename, User usr)
+        private static bool validateFavoriteInFavorites(XDocument doc, Favorite favorite)
+        {
+            try
+            {
+                var query = from fav in doc.Descendants("Favorite")
+                            where fav.Element("Url").Value == favorite.Url
+                            select new string(fav.Element("Url").Value.ToCharArray());
+
+                if (query.Any())
+                    return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return false;
+
+        }
+
+
+
+        /* Private helper methods */
+        private static void appendDotXmlIfNotPresent(ref string filename)
+        {
+            string extension = filename.Substring(filename.Length - 4);
+
+            if (extension != ".xml")
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(filename);
+                sb.Append(".xml");
+
+                filename = sb.ToString();
+            }
+
+        }
+        private static bool formatUsersIfNotExist(string filename, User usr)
         {
             if (!File.Exists(filename))
             {
+
                 XmlWriter writer = XmlWriter.Create(filename);
 
                 writer.WriteStartDocument();
@@ -181,27 +247,15 @@ namespace CSH_Seminarski_Web_Browser
                 writer.WriteEndDocument();
                 writer.Close();
 
+                return false;
             }
-
+            return true;
         }
-        private static void appendDotXmlIfNotPresent(ref string filename)
-        {
-            string extension = filename.Substring(filename.Length - 4);
-
-            if (extension != ".xml")
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(filename);
-                sb.Append(".xml");
-
-                filename = sb.ToString();
-            }
-
-        }
-        private static void formatHistoryIfNotExist(string filename, string favorite)
+        private static void formatHistoryIfNotExist(string filename)
         {
             if (!File.Exists(filename))
             {
+
                 XmlWriter writer = XmlWriter.Create(filename);
 
                 writer.WriteStartDocument();
@@ -213,6 +267,30 @@ namespace CSH_Seminarski_Web_Browser
 
             }
 
+        }
+        private static void formatFavoritesIfNotExist(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+
+                XmlWriter writer = XmlWriter.Create(filename);
+
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Favorites");
+                writer.WriteStartElement("Favorite");
+
+                writer.WriteStartElement("Url");
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("Name");
+                writer.WriteEndElement();
+
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+                writer.Close();
+
+            }
         }
     }
 }
