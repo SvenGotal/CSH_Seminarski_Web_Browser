@@ -15,19 +15,28 @@ namespace CSH_Seminarski_Web_Browser
     public partial class Form1 : Form
     {
         private string placeholder; 
-        private HashSet<string> history;
+        public User CurrentUser;
 
         public Form1()
         {
             InitializeComponent();
 
             placeholder = "http://";
-            history = new HashSet<string>();
+
+            CurrentUser = new User("common", "user");
 
             textBoxURL.Text = placeholder;
             textBoxURL.GotFocus += TextBoxURL_GotFocus;
             textBoxURL.LostFocus += TextBoxURL_LostFocus;
 
+            //try
+            //{
+            //    loadFavorites();
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show("Error:" + ex.Message, "Error", MessageBoxButtons.OK);
+            //}
         }
 
         /*********************************************************************************************/
@@ -51,30 +60,41 @@ namespace CSH_Seminarski_Web_Browser
 
         private void buttonGO_Click(object sender, EventArgs e)
         {
-            Navigate();
+            navigate();
+
+            refresh();
         }
         private void textBoxURL_KeyDown(object sender, KeyEventArgs e)
         {
             if(validateKey(e, Keys.Enter) && !string.IsNullOrWhiteSpace(textBoxURL.Text))
             {
-                Navigate();
+                navigate();
+                refresh();
             }
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {
             webBrowser.GoBack();
         }
+        private void buttonForward_Click(object sender, EventArgs e)
+        {
+            webBrowser.GoForward();
+        }
 
 
         private void buttonFavoritesAdd_Click(object sender, EventArgs e)
         {
-
-            
+            //TODO
+            throw new NotImplementedException();
 
         }
 
 
-
+        private void loadFavorites()
+        {
+            //TODO 
+            throw new NotImplementedException();
+        }
 
 
 
@@ -98,34 +118,42 @@ namespace CSH_Seminarski_Web_Browser
         /// <summary>
         /// Navigates the webBrowser control to the desired URL
         /// </summary>
-        private void Navigate()
+        private void navigate()
         {
             try
             {
                 historyToolStripMenuItem.DropDownItems.Clear();
 
                 webBrowser.Navigate(textBoxURL.Text);
-
-
-                textBoxURL.Text = webBrowser.Url.ToString();
-                history.Add(webBrowser.Url.ToString());
-                foreach (string item in history)
-                {
-                    historyToolStripMenuItem.DropDownItems.Add(item);
-
-                }
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
 
             }
 
         }
 
-        private async Task delayTask(int miliseconds)
+        private void refresh()
         {
-            await Task.Delay(miliseconds);
+
+            webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;
+
         }
+
+        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            string url = webBrowser.Url.ToString();
+            textBoxURL.Text = url;
+
+        }
+
+        //private List<string> readHistory()
+        //{
+        //    List<string> history = new List<string>();
+
+        //    CurrentUser
+        //}
+
 
         private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -137,5 +165,12 @@ namespace CSH_Seminarski_Web_Browser
         {
             this.Close();
         }
+
+        private void selectProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersSelect form = new UsersSelect();
+            form.Show();
+        }
+
     }
 }

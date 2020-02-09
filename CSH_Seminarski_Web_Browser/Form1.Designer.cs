@@ -33,6 +33,7 @@
             this.labelURL = new System.Windows.Forms.Label();
             this.buttonGO = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelUser = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonFavoritesAdd = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -44,8 +45,9 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favoritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelUser = new System.Windows.Forms.Label();
+            this.buttonForward = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +66,7 @@
             // 
             // textBoxURL
             // 
-            this.textBoxURL.Location = new System.Drawing.Point(187, 21);
+            this.textBoxURL.Location = new System.Drawing.Point(337, 19);
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(600, 26);
             this.textBoxURL.TabIndex = 1;
@@ -74,7 +76,7 @@
             // 
             this.labelURL.AutoSize = true;
             this.labelURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelURL.Location = new System.Drawing.Point(125, 22);
+            this.labelURL.Location = new System.Drawing.Point(275, 20);
             this.labelURL.Name = "labelURL";
             this.labelURL.Size = new System.Drawing.Size(56, 25);
             this.labelURL.TabIndex = 2;
@@ -82,7 +84,7 @@
             // 
             // buttonGO
             // 
-            this.buttonGO.Location = new System.Drawing.Point(809, 17);
+            this.buttonGO.Location = new System.Drawing.Point(959, 15);
             this.buttonGO.Name = "buttonGO";
             this.buttonGO.Size = new System.Drawing.Size(55, 35);
             this.buttonGO.TabIndex = 3;
@@ -95,6 +97,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.buttonForward);
             this.panel1.Controls.Add(this.labelUser);
             this.panel1.Controls.Add(this.buttonBack);
             this.panel1.Controls.Add(this.buttonFavoritesAdd);
@@ -106,9 +109,18 @@
             this.panel1.Size = new System.Drawing.Size(1208, 72);
             this.panel1.TabIndex = 4;
             // 
+            // labelUser
+            // 
+            this.labelUser.AutoSize = true;
+            this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUser.Location = new System.Drawing.Point(1072, 26);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(0, 29);
+            this.labelUser.TabIndex = 6;
+            // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(15, 19);
+            this.buttonBack.Location = new System.Drawing.Point(14, 17);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(94, 31);
             this.buttonBack.TabIndex = 5;
@@ -118,7 +130,7 @@
             // 
             // buttonFavoritesAdd
             // 
-            this.buttonFavoritesAdd.Location = new System.Drawing.Point(879, 17);
+            this.buttonFavoritesAdd.Location = new System.Drawing.Point(1029, 15);
             this.buttonFavoritesAdd.Name = "buttonFavoritesAdd";
             this.buttonFavoritesAdd.Size = new System.Drawing.Size(156, 35);
             this.buttonFavoritesAdd.TabIndex = 4;
@@ -153,20 +165,21 @@
             // newProfileToolStripMenuItem
             // 
             this.newProfileToolStripMenuItem.Name = "newProfileToolStripMenuItem";
-            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
             this.newProfileToolStripMenuItem.Text = "&New profile";
             this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
             // selectProfileToolStripMenuItem
             // 
             this.selectProfileToolStripMenuItem.Name = "selectProfileToolStripMenuItem";
-            this.selectProfileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.selectProfileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
             this.selectProfileToolStripMenuItem.Text = "&Select profile";
+            this.selectProfileToolStripMenuItem.Click += new System.EventHandler(this.selectProfileToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -193,9 +206,16 @@
             // 
             // historyToolStripMenuItem
             // 
+            this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1});
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
             this.historyToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
             this.historyToolStripMenuItem.Text = "&History";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(87, 6);
             // 
             // favoritesToolStripMenuItem
             // 
@@ -203,14 +223,15 @@
             this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.favoritesToolStripMenuItem.Text = "&Favorites";
             // 
-            // labelUser
+            // buttonForward
             // 
-            this.labelUser.AutoSize = true;
-            this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUser.Location = new System.Drawing.Point(1072, 26);
-            this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(0, 29);
-            this.labelUser.TabIndex = 6;
+            this.buttonForward.Location = new System.Drawing.Point(131, 17);
+            this.buttonForward.Name = "buttonForward";
+            this.buttonForward.Size = new System.Drawing.Size(110, 31);
+            this.buttonForward.TabIndex = 7;
+            this.buttonForward.Text = "Go Forward";
+            this.buttonForward.UseVisualStyleBackColor = true;
+            this.buttonForward.Click += new System.EventHandler(this.buttonForward_Click);
             // 
             // Form1
             // 
@@ -252,6 +273,8 @@
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
         private System.Windows.Forms.Label labelUser;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Button buttonForward;
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSH_Seminarski_Web_Browser
 {
-    public class Favorite
+    public class Favorite : ICloneable
     {
         private string url;
         private string name;
@@ -41,5 +41,9 @@ namespace CSH_Seminarski_Web_Browser
             }
         }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

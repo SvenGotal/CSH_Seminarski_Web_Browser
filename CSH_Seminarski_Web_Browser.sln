@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSH_Seminarski_Web_Browser", "CSH_Seminarski_Web_Browser\CSH_Seminarski_Web_Browser.csproj", "{09D5B49F-0DBC-4594-83DC-2EA9FE3806F9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88C764C6-A2D6-4ACD-AA9B-07D4AFE2A81B}"
+	ProjectSection(SolutionItems) = preProject
+		Junk.txt = Junk.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

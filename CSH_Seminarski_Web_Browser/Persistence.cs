@@ -14,7 +14,7 @@ namespace CSH_Seminarski_Web_Browser
 
 
 
-        /* Write functionalities */
+        /* Write to xml functionalities */
         /// <summary>
         /// Writers the user in specified format to desired filename, if user already exists it adds user to the specified .xml format.
         /// </summary>
@@ -101,7 +101,7 @@ namespace CSH_Seminarski_Web_Browser
 
 
 
-        /* Read functionalities */
+        /* Read from xml functionalities */
         public static List<string> ReadHistory(string filename)
         {
             //TODO reserved for varsion 1.2.

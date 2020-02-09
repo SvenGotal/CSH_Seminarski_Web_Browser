@@ -1,0 +1,182 @@
+        public bool AddUserHistory()
+        {
+            return true;
+        }
+
+        public bool ReadUserHistory()
+        {
+            return true;
+        }
+
+        public List<string> ReadAllUsers()
+        {
+            List<string> users = new List<string>();
+
+            XDocument doc;
+
+
+            doc= XDocument.Load("Users.xml");
+
+            var query = from usr in doc.Descendants("User")
+                        select new
+                        {
+                            name = usr.Element("Name").Value,
+                            last = usr.Element("Last").Value
+                        };
+
+            foreach (var item in query)
+            {
+                users.Add(item.name.ToString() + " " + item.last.ToString());
+            }
+
+            return users;
+        }
+
+        public bool AddUserFavorites(string url)
+        {
+            XDocument doc = XDocument.Load(name + ".xml");
+            XElement favorites = doc.Element("Favorites");
+
+            var validateFav = from fav in doc.Descendants("Favorites")
+                              where fav.Element("Url").Value == url
+                              select new
+                              {
+                                  URL = fav.Element("url").Value
+                              };
+
+            if (!validateFav.Any())
+            {
+                favorites.Add(new XElement("Url", url));
+                doc.Save(name + ".xml");
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public List<string> ReadUserFavorites()
+        {
+
+            List<string> list = new List<string>();
+            XDocument doc = XDocument.Load(name + ".xml");
+            var query = from fav in doc.Descendants("Favorites")
+                        select new
+                        {
+                            url = fav.Element("Url").Value.ToString()
+                        };
+
+            foreach (var item in query)
+            {
+                list.Add(item.url.ToString());
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Creates the .xml file for Favorites for this user.
+        /// </summary>
+        /// <returns>True if file did not exist previously</returns>
+        private bool createFavorites()
+        {
+            string filename_favs = name + ".xml";
+
+            if (!File.Exists(filename_favs))
+            {
+                XmlWriter xwriter = XmlWriter.Create(filename_favs);
+                xwriter.WriteStartDocument();
+                xwriter.WriteStartElement("Favorites");
+                //xwriter.WriteEndElement();
+                xwriter.WriteEndDocument();
+                xwriter.Close();
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Creates the .xml file for History for this user.
+        /// </summary>
+        /// <returns>True if file did not exist previously</returns>
+        private bool createHistory()
+        {
+            string filename_hist = name + "_history.xml";
+
+            if (!File.Exists(filename_hist))
+            {
+                XmlWriter xwriter = XmlWriter.Create(filename_hist);
+                xwriter.WriteStartDocument();
+                xwriter.Close();
+                return true;
+            }
+            return false;
+        }
+
+        private bool createUsers()
+        {
+            if(!File.Exists("Users.xml"))
+            {
+                XmlWriter writer = XmlWriter.Create("Users.xml");
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Users");
+
+                writer.WriteStartElement("User");
+
+                writer.WriteStartElement("Name");
+                writer.WriteString(name);
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("Last");
+                writer.WriteString(lname);
+                writer.WriteEndElement();
+
+
+                writer.WriteEndDocument();
+                writer.Close();
+
+                return true;
+            }
+            else
+            {
+                addUser();
+            }
+            return false;
+        }
+        private bool addUser()
+        {
+            if (!validateUser())
+            {
+                XDocument xdoc = XDocument.Load("Users.xml");
+                XElement user = xdoc.Element("Users");
+                user.Add(new XElement("User", new XElement("Name", name),
+                                              new XElement("Last", lname)));
+                xdoc.Save("Users.xml");
+                
+
+            }
+            return true;
+        }
+        /// <summary>
+        /// Checks if the user already exists within the Users.xml.
+        /// </summary>
+        /// <returns>Returns true if user already exists, false otherwise.</returns>
+        private bool validateUser()
+        {
+            XDocument doc = XDocument.Load("Users.xml");
+
+            var findUser = from users in doc.Descendants("User")
+                           where users.Element("Name").Value == name && users.Element("Last").Value == lname
+                           select new
+                           {
+                               name = users.Element("Name").Value,
+                               lname = users.Element("Last").Value
+                           };
+
+            if (findUser.Any())
+                return true;
+
+            return false;
+        }
