@@ -33,6 +33,7 @@
             this.labelURL = new System.Windows.Forms.Label();
             this.buttonGO = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonForward = new System.Windows.Forms.Button();
             this.labelUser = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonFavoritesAdd = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favoritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonForward = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,11 +57,11 @@
             this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser.Location = new System.Drawing.Point(12, 122);
+            this.webBrowser.Location = new System.Drawing.Point(12, 100);
             this.webBrowser.Margin = new System.Windows.Forms.Padding(10);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(1208, 522);
+            this.webBrowser.Size = new System.Drawing.Size(1208, 544);
             this.webBrowser.TabIndex = 0;
             // 
             // textBoxURL
@@ -106,8 +106,18 @@
             this.panel1.Controls.Add(this.textBoxURL);
             this.panel1.Location = new System.Drawing.Point(12, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1208, 72);
+            this.panel1.Size = new System.Drawing.Size(1208, 57);
             this.panel1.TabIndex = 4;
+            // 
+            // buttonForward
+            // 
+            this.buttonForward.Location = new System.Drawing.Point(131, 17);
+            this.buttonForward.Name = "buttonForward";
+            this.buttonForward.Size = new System.Drawing.Size(110, 31);
+            this.buttonForward.TabIndex = 7;
+            this.buttonForward.Text = "Go Forward";
+            this.buttonForward.UseVisualStyleBackColor = true;
+            this.buttonForward.Click += new System.EventHandler(this.buttonForward_Click);
             // 
             // labelUser
             // 
@@ -195,14 +205,16 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(172, 34);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.helpToolStripMenuItem.Text = "&Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(172, 34);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.versionToolStripMenuItem.Text = "&Version";
+            this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
             // 
             // historyToolStripMenuItem
             // 
@@ -211,6 +223,7 @@
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
             this.historyToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
             this.historyToolStripMenuItem.Text = "&History";
+            this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -222,16 +235,7 @@
             this.favoritesToolStripMenuItem.Name = "favoritesToolStripMenuItem";
             this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.favoritesToolStripMenuItem.Text = "&Favorites";
-            // 
-            // buttonForward
-            // 
-            this.buttonForward.Location = new System.Drawing.Point(131, 17);
-            this.buttonForward.Name = "buttonForward";
-            this.buttonForward.Size = new System.Drawing.Size(110, 31);
-            this.buttonForward.TabIndex = 7;
-            this.buttonForward.Text = "Go Forward";
-            this.buttonForward.UseVisualStyleBackColor = true;
-            this.buttonForward.Click += new System.EventHandler(this.buttonForward_Click);
+            this.favoritesToolStripMenuItem.Click += new System.EventHandler(this.favoritesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -254,8 +258,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.TextBox textBoxURL;
         private System.Windows.Forms.Label labelURL;
         private System.Windows.Forms.Button buttonGO;
@@ -275,6 +277,7 @@
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Button buttonForward;
+        public System.Windows.Forms.WebBrowser webBrowser;
     }
 }
 

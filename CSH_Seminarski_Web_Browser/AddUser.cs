@@ -25,8 +25,7 @@ namespace CSH_Seminarski_Web_Browser
         private void buttonOk_Click(object sender, EventArgs e)
         {
             //TODO
-            throw new NotImplementedException();
-
+            comingSoon();
             //string name = textBoxName.Text;
             //string last = textBoxLast.Text;
 
@@ -39,6 +38,10 @@ namespace CSH_Seminarski_Web_Browser
             //    User usr = new User(name, last);
             //}
 
+        }
+        public void comingSoon()
+        {
+            MessageBox.Show("Coming soon!!!");
         }
     }
 }

@@ -24,19 +24,12 @@ namespace CSH_Seminarski_Web_Browser
             placeholder = "http://";
 
             CurrentUser = new User("common", "user");
+            UpdateCurrentUserFavorites();
 
             textBoxURL.Text = placeholder;
             textBoxURL.GotFocus += TextBoxURL_GotFocus;
             textBoxURL.LostFocus += TextBoxURL_LostFocus;
 
-            //try
-            //{
-            //    loadFavorites();
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show("Error:" + ex.Message, "Error", MessageBoxButtons.OK);
-            //}
         }
 
         /*********************************************************************************************/
@@ -84,21 +77,18 @@ namespace CSH_Seminarski_Web_Browser
 
         private void buttonFavoritesAdd_Click(object sender, EventArgs e)
         {
-            //TODO
-            throw new NotImplementedException();
-
+            AddFavorite add = new AddFavorite(this);
+            add.Show();
         }
 
 
-        private void loadFavorites()
+        private List<Favorite> loadCurrentUserFavorites()
         {
-            //TODO 
-            throw new NotImplementedException();
+
+            string filename = CurrentUser.Name + "_favorites.xml";
+            return Persistence.ReadFavorites(filename);
+            
         }
-
-
-
-
 
 
         /*********************************************************************************************/
@@ -147,12 +137,6 @@ namespace CSH_Seminarski_Web_Browser
 
         }
 
-        //private List<string> readHistory()
-        //{
-        //    List<string> history = new List<string>();
-
-        //    CurrentUser
-        //}
 
 
         private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -172,5 +156,61 @@ namespace CSH_Seminarski_Web_Browser
             form.Show();
         }
 
+        private void favoritesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            favoritesToolStripMenuItem.DropDownItems.Clear();
+            foreach (Favorite favorite in CurrentUser.Favorites)
+            {
+
+                ToolStripMenuItem item = new ToolStripMenuItem(favoritesToolStripMenuItem.ToString());
+                item.Text = favorite.Url;
+                item.Click += new EventHandler(menu_Click);
+                favoritesToolStripMenuItem.DropDownItems.Add(item);
+
+            }
+
+        }
+        public void UpdateCurrentUserFavorites()
+        {
+            try
+            {
+                CurrentUser.Favorites = loadCurrentUserFavorites();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void menu_Click(object sender , EventArgs e)
+        {
+            var menuItem = sender as ToolStripMenuItem;
+            var menuText = menuItem.Text;
+
+            webBrowser.Navigate(menuText);
+
+            refresh();
+
+        }
+
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO 
+            comingSoon();
+        }
+        public void comingSoon()
+        {
+            MessageBox.Show("Coming soon!!!");
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comingSoon();
+        }
+
+        private void versionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comingSoon();
+        }
     }
 }
