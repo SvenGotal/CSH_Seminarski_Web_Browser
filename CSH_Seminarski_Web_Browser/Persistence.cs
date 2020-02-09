@@ -139,9 +139,32 @@ namespace CSH_Seminarski_Web_Browser
             //TODO reserved for v.1.2.
             throw new NotImplementedException();
         }
-        public static List<string> ReadFavorites(string filename)
+        public static List<Favorite> ReadFavorites(string filename)
         {
-            throw new NotImplementedException();
+            List<Favorite> favorites = new List<Favorite>();
+            XDocument doc;
+
+            try
+            {
+                appendDotXmlIfNotPresent(ref filename);
+                doc = XDocument.Load(filename);
+
+                var query = from favs in doc.Descendants("Favorite")
+                            select new Favorite(favs.Element("Url").Value, favs.Element("Name").Value);
+
+                foreach (Favorite favorite in query)
+                {
+                    favorites.Add(favorite);
+                }
+
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+
+
+            return favorites;
         }
 
 
@@ -277,15 +300,8 @@ namespace CSH_Seminarski_Web_Browser
 
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Favorites");
-                writer.WriteStartElement("Favorite");
 
-                writer.WriteStartElement("Url");
-                writer.WriteEndElement();
 
-                writer.WriteStartElement("Name");
-                writer.WriteEndElement();
-
-                writer.WriteEndElement();
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
                 writer.Close();
