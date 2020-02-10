@@ -33,6 +33,7 @@ namespace CSH_Seminarski_Web_Browser
         private string name;
         private string lname;
         private List<Favorite> favorites;
+        private List<string> history;
 
         public string Name 
         { 
@@ -59,7 +60,17 @@ namespace CSH_Seminarski_Web_Browser
                 this.favorites = value;
             }
         }
-
+        public List<string> History
+        {
+            get
+            {
+                return history.Clone<string>();
+            }
+            set
+            {
+                this.history = value;
+            }
+        }
 
         public User() 
         {
@@ -79,7 +90,12 @@ namespace CSH_Seminarski_Web_Browser
             this.lname = lname;
             this.favorites = favorites;
         }
-
+        public User(string name, string lname, List<string> history)
+        {
+            this.name = name;
+            this.lname = lname;
+            this.history = history;
+        }
 
     }
 }
