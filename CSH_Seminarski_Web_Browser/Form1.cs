@@ -97,14 +97,21 @@ namespace CSH_Seminarski_Web_Browser
         private void favoritesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             favoritesToolStripMenuItem.DropDownItems.Clear();
-            foreach (Favorite favorite in CurrentUser.Favorites)
+
+            try
             {
+                foreach (Favorite favorite in CurrentUser.Favorites)
+                {
+                    ToolStripMenuItem item = new ToolStripMenuItem(favoritesToolStripMenuItem.ToString());
+                    item.Text = favorite.Url;
+                    item.Click += new EventHandler(menu_Click);
+                    favoritesToolStripMenuItem.DropDownItems.Add(item);
+                }
 
-                ToolStripMenuItem item = new ToolStripMenuItem(favoritesToolStripMenuItem.ToString());
-                item.Text = favorite.Url;
-                item.Click += new EventHandler(menu_Click);
-                favoritesToolStripMenuItem.DropDownItems.Add(item);
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Uuups, unable to load your favorites. Is the file missing? Error msg: " + ex.Message);
             }
 
         }
