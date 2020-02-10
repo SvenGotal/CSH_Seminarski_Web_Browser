@@ -131,7 +131,7 @@ namespace CSH_Seminarski_Web_Browser
         }
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ComingSoon();
+            MessageBox.Show("Perhaps in the future help will be provided.");
         }
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)
         {
