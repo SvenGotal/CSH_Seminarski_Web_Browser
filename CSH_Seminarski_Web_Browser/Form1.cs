@@ -135,7 +135,8 @@ namespace CSH_Seminarski_Web_Browser
         }
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ComingSoon();
+            About ab = new About();
+            ab.Show();
         }
 
 
