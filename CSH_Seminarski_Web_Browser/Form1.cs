@@ -7,6 +7,7 @@ namespace CSH_Seminarski_Web_Browser
 
     //TODO NoteToSelf: For users logins use DB, not .xml
     //TODO NoteToSelf: Expand User class with password.
+    //TODO DeBug: History writes itself multiple times during navigation.
 
     public partial class Form1 : Form
     {
@@ -231,6 +232,8 @@ namespace CSH_Seminarski_Web_Browser
         }
         private void addUserHistory(string history)
         {
+            if (CurrentUser.History == null)
+                CurrentUser.History = new List<string>();
             CurrentUser.History.Add(history);
         }
         private bool validateKey(KeyEventArgs key, Keys chosenKey)
