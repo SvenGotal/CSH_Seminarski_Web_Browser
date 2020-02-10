@@ -64,7 +64,7 @@ namespace CSH_Seminarski_Web_Browser
         {
             get
             {
-                return history.Clone<string>();
+                return history;
             }
             set
             {
@@ -90,10 +90,11 @@ namespace CSH_Seminarski_Web_Browser
             this.lname = lname;
             this.favorites = favorites;
         }
-        public User(string name, string lname, List<string> history)
+        public User(string name, string lname, List<Favorite> favorites, List<string> history)
         {
             this.name = name;
             this.lname = lname;
+            this.favorites = favorites;
             this.history = history;
         }
 

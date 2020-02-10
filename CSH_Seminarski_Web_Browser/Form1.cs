@@ -19,14 +19,22 @@ namespace CSH_Seminarski_Web_Browser
 
             placeholder = "http://";
 
+            //CurrentUser = new User("common","user",Persistence.ReadFavorites(CurrentUser.Name + "_favorites.xml"),Persistence.ReadHistory(CurrentUser.Name + "_history.xml"));
+
             CurrentUser = new User("common", "user");
+            CurrentUser.Favorites = new List<Favorite>();
+            CurrentUser.History = new List<string>();
+
             UpdateCurrentUserFavorites();
+            UpdateCurrentUserHistory();
 
 
             textBoxURL.Text = placeholder;
             textBoxURL.GotFocus += TextBoxURL_GotFocus;
             textBoxURL.LostFocus += TextBoxURL_LostFocus;
 
+            TestForm tf = new TestForm();
+            tf.Show();
         }
 
         /*********************************************************************************************/
@@ -76,8 +84,8 @@ namespace CSH_Seminarski_Web_Browser
         {
             string url = webBrowser.Url.ToString();
             textBoxURL.Text = url;
-            addUserHistory(url);
             persistUserHistory(url);
+            addUserHistory(url);
 
         }
         private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,7 +182,6 @@ namespace CSH_Seminarski_Web_Browser
                 MessageBox.Show(ex.Message);
             }
         }
-
         public void UpdateCurrentUserHistory()
         {
             try
@@ -251,9 +258,5 @@ namespace CSH_Seminarski_Web_Browser
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

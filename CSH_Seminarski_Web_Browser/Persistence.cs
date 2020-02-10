@@ -121,8 +121,31 @@ namespace CSH_Seminarski_Web_Browser
         /// <returns>If reading is successful the the List\<Favorite\> is returned.</Favorite></returns>
         public static List<string> ReadHistory(string filename)
         {
-            //TODO reserved for v.1.2.
-            throw new NotImplementedException();
+            List<string> histories = new List<string>();
+            XDocument doc;
+
+            try
+            {
+                appendDotXmlIfNotPresent(ref filename);
+                doc = XDocument.Load(filename);
+
+                var query = from favs in doc.Descendants("History")
+                            select new string(favs.Element("Url").Value.ToCharArray());
+
+                foreach (string history in query)
+                {
+                    histories.Add(history);
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+
+            return histories;
+
         }
         /// <summary>
         /// Reads the specified file that contains users.
