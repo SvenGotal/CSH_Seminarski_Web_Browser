@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace CSH_Seminarski_Web_Browser
 {
@@ -57,7 +49,6 @@ namespace CSH_Seminarski_Web_Browser
         private void buttonGO_Click(object sender, EventArgs e)
         {
             navigate();
-
             refresh();
         }
         private void textBoxURL_KeyDown(object sender, KeyEventArgs e)
@@ -85,6 +76,8 @@ namespace CSH_Seminarski_Web_Browser
         {
             string url = webBrowser.Url.ToString();
             textBoxURL.Text = url;
+            addUserHistory(url);
+            persistUserHistory(url);
 
         }
         private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,8 +120,23 @@ namespace CSH_Seminarski_Web_Browser
         }
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO reserved for v.1.2.
-            ComingSoon();
+            historyToolStripMenuItem.DropDownItems.Clear();
+
+            try
+            {
+                foreach (string history in CurrentUser.History)
+                {
+                    ToolStripMenuItem item = new ToolStripMenuItem(historyToolStripMenuItem.ToString());
+                    item.Text = history;
+                    item.Click += new EventHandler(menu_Click);
+                    historyToolStripMenuItem.DropDownItems.Add(item);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Uuups, unable to load your history. Is the file missing? Error msg: " + ex.Message);
+            }
+
         }
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -195,6 +203,22 @@ namespace CSH_Seminarski_Web_Browser
             string filename = CurrentUser.Name + "_history.xml";
             return Persistence.ReadHistory(filename);
         }
+        private void persistUserHistory(string history)
+        {
+            try
+            {
+                string filename = CurrentUser.Name + "_history.xml";
+                Persistence.WriteHistory(filename, history);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void addUserHistory(string history)
+        {
+            CurrentUser.History.Add(history);
+        }
         private bool validateKey(KeyEventArgs key, Keys chosenKey)
         {
             return key.KeyCode == chosenKey;
@@ -220,5 +244,9 @@ namespace CSH_Seminarski_Web_Browser
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
