@@ -30,6 +30,7 @@ namespace CSH_Seminarski_Web_Browser
             CurrentUser = new User("common", "user");
             UpdateCurrentUserFavorites();
 
+
             textBoxURL.Text = placeholder;
             textBoxURL.GotFocus += TextBoxURL_GotFocus;
             textBoxURL.LostFocus += TextBoxURL_LostFocus;
@@ -158,6 +159,19 @@ namespace CSH_Seminarski_Web_Browser
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void UpdateCurrentUserHistory()
+        {
+            try
+            {
+                CurrentUser.History = loadCurrentUserHistory();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Displays the "Coming soon" message.
         /// </summary>
@@ -175,6 +189,11 @@ namespace CSH_Seminarski_Web_Browser
             string filename = CurrentUser.Name + "_favorites.xml";
             return Persistence.ReadFavorites(filename);
 
+        }
+        private List<string> loadCurrentUserHistory()
+        {
+            string filename = CurrentUser.Name + "_history.xml";
+            return Persistence.ReadHistory(filename);
         }
         private bool validateKey(KeyEventArgs key, Keys chosenKey)
         {
