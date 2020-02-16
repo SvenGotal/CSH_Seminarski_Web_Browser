@@ -107,18 +107,23 @@ namespace CSH_Seminarski_Web_Browser
         }
         private void favoritesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            favoritesToolStripMenuItem.DropDownItems.Clear();
 
             try
             {
+                ToolStripDropDown FavoritesList = new ToolStripDropDown();
+
                 foreach (Favorite favorite in CurrentUser.Favorites)
                 {
+
                     ToolStripMenuItem item = new ToolStripMenuItem(favoritesToolStripMenuItem.ToString());
                     item.Text = favorite.Url;
                     item.Click += new EventHandler(menu_Click);
-                    favoritesToolStripMenuItem.DropDownItems.Add(item);
+                    FavoritesList.Items.Add(item);
+                    //favoritesToolStripMenuItem.DropDownItems.Add(item);
                 }
 
+                favoritesToolStripMenuItem.DropDown = FavoritesList;
+                
             }
             catch (Exception ex)
             {
@@ -126,6 +131,8 @@ namespace CSH_Seminarski_Web_Browser
             }
 
         }
+
+
         private void menu_Click(object sender, EventArgs e)
         {
             var menuItem = sender as ToolStripMenuItem;

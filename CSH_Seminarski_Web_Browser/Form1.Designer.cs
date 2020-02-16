@@ -46,7 +46,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favoritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -218,21 +217,15 @@
             // 
             // historyToolStripMenuItem
             // 
-            this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1});
             this.historyToolStripMenuItem.Enabled = false;
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
             this.historyToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
             this.historyToolStripMenuItem.Text = "&History";
             this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(267, 6);
-            // 
             // favoritesToolStripMenuItem
             // 
+            this.favoritesToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.favoritesToolStripMenuItem.Name = "favoritesToolStripMenuItem";
             this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.favoritesToolStripMenuItem.Text = "&Favorites";
@@ -275,7 +268,6 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.Label labelUser;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Button buttonForward;
         public System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
