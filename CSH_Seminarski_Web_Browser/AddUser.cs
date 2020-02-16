@@ -15,6 +15,9 @@ namespace CSH_Seminarski_Web_Browser
         public AddUser()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
 

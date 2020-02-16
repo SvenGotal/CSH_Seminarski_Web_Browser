@@ -57,11 +57,11 @@
             this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser.Location = new System.Drawing.Point(12, 100);
+            this.webBrowser.Location = new System.Drawing.Point(0, 99);
             this.webBrowser.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(1208, 545);
+            this.webBrowser.Size = new System.Drawing.Size(1227, 506);
             this.webBrowser.TabIndex = 0;
             // 
             // textBoxURL
@@ -106,7 +106,7 @@
             this.panel1.Controls.Add(this.textBoxURL);
             this.panel1.Location = new System.Drawing.Point(12, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1208, 57);
+            this.panel1.Size = new System.Drawing.Size(1227, 57);
             this.panel1.TabIndex = 4;
             // 
             // buttonForward
@@ -274,11 +274,11 @@
         private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Button buttonForward;
         public System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
     }
 }
 

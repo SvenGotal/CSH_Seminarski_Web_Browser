@@ -20,9 +20,8 @@ namespace CSH_Seminarski_Web_Browser
 
             placeholder = "http://";
 
-            //CurrentUser = new User("common","user",Persistence.ReadFavorites(CurrentUser.Name + "_favorites.xml"),Persistence.ReadHistory(CurrentUser.Name + "_history.xml"));
 
-            CurrentUser = new User("common", "user");
+            CurrentUser = new User("nologin", "user");
             CurrentUser.Favorites = new List<Favorite>();
             CurrentUser.History = new List<string>();
 
@@ -36,6 +35,9 @@ namespace CSH_Seminarski_Web_Browser
 
             TestForm tf = new TestForm();
             tf.Show();
+
+            checkIfListAvailable<Favorite>(CurrentUser.Favorites, favoritesToolStripMenuItem);
+
         }
 
         /*********************************************************************************************/
@@ -79,7 +81,7 @@ namespace CSH_Seminarski_Web_Browser
         private void buttonFavoritesAdd_Click(object sender, EventArgs e)
         {
             AddFavorite add = new AddFavorite(this);
-            add.Show();
+            add.ShowDialog(this);
         }
         private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
@@ -92,7 +94,7 @@ namespace CSH_Seminarski_Web_Browser
         private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddUser form = new AddUser();
-            form.Show();
+            form.ShowDialog(this);
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -161,7 +163,7 @@ namespace CSH_Seminarski_Web_Browser
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About ab = new About();
-            ab.Show();
+            ab.ShowDialog(this);
         }
 
 
@@ -262,6 +264,21 @@ namespace CSH_Seminarski_Web_Browser
             webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;
 
         }
+        public void checkIfListAvailable<T>(List<T> list, ToolStripMenuItem ctrl)
+        {
+            if (list != null && list.Count != 0)
+                ctrl.Enabled = true;
+            else
+                ctrl.Enabled = false;
+        }
 
+        /// <summary>
+        /// Getter for FavoritesToolstripItem in main Form
+        /// </summary>
+        /// <returns></returns>
+        public ToolStripMenuItem getFavoritesToolstripItem()
+        {
+            return favoritesToolStripMenuItem;
+        }
     }
 }

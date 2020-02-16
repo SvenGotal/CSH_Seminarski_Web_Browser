@@ -53,7 +53,9 @@ namespace CSH_Seminarski_Web_Browser
         {
             get
             {
-                return favorites.Clone<Favorite>();
+                if(favorites != null)
+                    return favorites.Clone<Favorite>();
+                return new List<Favorite>();
             }
             set
             {
@@ -83,12 +85,14 @@ namespace CSH_Seminarski_Web_Browser
             this.name = name;
             this.lname = lname;
             this.favorites = new List<Favorite>();
+            this.history = new List<string>();
         }
         public User(string name, string lname, List<Favorite> favorites)
         {
             this.name = name;
             this.lname = lname;
             this.favorites = favorites;
+            this.history = new List<string>();
         }
         public User(string name, string lname, List<Favorite> favorites, List<string> history)
         {

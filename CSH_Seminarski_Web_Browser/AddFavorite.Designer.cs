@@ -100,6 +100,7 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.Name = "AddFavorite";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddFavorite";
             this.ResumeLayout(false);
             this.PerformLayout();

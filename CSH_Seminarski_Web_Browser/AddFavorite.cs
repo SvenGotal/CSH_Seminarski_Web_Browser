@@ -24,12 +24,21 @@ namespace CSH_Seminarski_Web_Browser
             this.mainForm = mainForm as Form1;
             InitializeComponent();
 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
+
             try
             {
+
+
                 placeholder = this.mainForm.webBrowser.Url.ToString();
                 textBoxUrl.Text = placeholder;
                 textBoxUrl.GotFocus += TextBoxUrl_GotFocus;
                 textBoxUrl.LostFocus += TextBoxUrl_LostFocus;
+
+
 
             }
             catch (Exception)
@@ -69,6 +78,7 @@ namespace CSH_Seminarski_Web_Browser
                     Persistence.WriteFavorite(filename, fav);
 
                     this.mainForm.UpdateCurrentUserFavorites();
+                    this.mainForm.checkIfListAvailable<Favorite>(mainForm.CurrentUser.Favorites, mainForm.getFavoritesToolstripItem());
 
                     this.Close();
 
