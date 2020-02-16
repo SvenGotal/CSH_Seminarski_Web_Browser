@@ -183,6 +183,8 @@ namespace CSH_Seminarski_Web_Browser
                 MessageBox.Show(ex.Message);
             }
         }
+
+        //TODO Document: Pending
         public void UpdateCurrentUserHistory()
         {
             try

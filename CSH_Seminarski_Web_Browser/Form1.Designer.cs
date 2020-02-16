@@ -57,19 +57,18 @@
             this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser.Location = new System.Drawing.Point(8, 65);
-            this.webBrowser.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(13, 13);
+            this.webBrowser.Location = new System.Drawing.Point(12, 100);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(805, 354);
+            this.webBrowser.Size = new System.Drawing.Size(1208, 545);
             this.webBrowser.TabIndex = 0;
             // 
             // textBoxURL
             // 
-            this.textBoxURL.Location = new System.Drawing.Point(225, 12);
-            this.textBoxURL.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxURL.Location = new System.Drawing.Point(338, 18);
             this.textBoxURL.Name = "textBoxURL";
-            this.textBoxURL.Size = new System.Drawing.Size(401, 20);
+            this.textBoxURL.Size = new System.Drawing.Size(600, 26);
             this.textBoxURL.TabIndex = 1;
             this.textBoxURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxURL_KeyDown);
             // 
@@ -77,19 +76,17 @@
             // 
             this.labelURL.AutoSize = true;
             this.labelURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelURL.Location = new System.Drawing.Point(183, 13);
-            this.labelURL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelURL.Location = new System.Drawing.Point(274, 20);
             this.labelURL.Name = "labelURL";
-            this.labelURL.Size = new System.Drawing.Size(40, 17);
+            this.labelURL.Size = new System.Drawing.Size(56, 25);
             this.labelURL.TabIndex = 2;
             this.labelURL.Text = "URL:";
             // 
             // buttonGO
             // 
-            this.buttonGO.Location = new System.Drawing.Point(639, 10);
-            this.buttonGO.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonGO.Location = new System.Drawing.Point(958, 15);
             this.buttonGO.Name = "buttonGO";
-            this.buttonGO.Size = new System.Drawing.Size(37, 23);
+            this.buttonGO.Size = new System.Drawing.Size(56, 35);
             this.buttonGO.TabIndex = 3;
             this.buttonGO.Text = "GO!";
             this.buttonGO.UseVisualStyleBackColor = true;
@@ -107,18 +104,16 @@
             this.panel1.Controls.Add(this.buttonGO);
             this.panel1.Controls.Add(this.labelURL);
             this.panel1.Controls.Add(this.textBoxURL);
-            this.panel1.Location = new System.Drawing.Point(8, 24);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(12, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(805, 37);
+            this.panel1.Size = new System.Drawing.Size(1208, 57);
             this.panel1.TabIndex = 4;
             // 
             // buttonForward
             // 
-            this.buttonForward.Location = new System.Drawing.Point(87, 11);
-            this.buttonForward.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonForward.Location = new System.Drawing.Point(130, 17);
             this.buttonForward.Name = "buttonForward";
-            this.buttonForward.Size = new System.Drawing.Size(73, 20);
+            this.buttonForward.Size = new System.Drawing.Size(110, 31);
             this.buttonForward.TabIndex = 7;
             this.buttonForward.Text = "Go Forward";
             this.buttonForward.UseVisualStyleBackColor = true;
@@ -128,18 +123,16 @@
             // 
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUser.Location = new System.Drawing.Point(715, 17);
-            this.labelUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelUser.Location = new System.Drawing.Point(1072, 26);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(0, 20);
+            this.labelUser.Size = new System.Drawing.Size(0, 29);
             this.labelUser.TabIndex = 6;
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(9, 11);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonBack.Location = new System.Drawing.Point(14, 17);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(63, 20);
+            this.buttonBack.Size = new System.Drawing.Size(94, 31);
             this.buttonBack.TabIndex = 5;
             this.buttonBack.Text = "Go Back";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -147,10 +140,9 @@
             // 
             // buttonFavoritesAdd
             // 
-            this.buttonFavoritesAdd.Location = new System.Drawing.Point(686, 10);
-            this.buttonFavoritesAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonFavoritesAdd.Location = new System.Drawing.Point(1029, 15);
             this.buttonFavoritesAdd.Name = "buttonFavoritesAdd";
-            this.buttonFavoritesAdd.Size = new System.Drawing.Size(104, 23);
+            this.buttonFavoritesAdd.Size = new System.Drawing.Size(156, 35);
             this.buttonFavoritesAdd.TabIndex = 4;
             this.buttonFavoritesAdd.Text = "Add to favorites";
             this.buttonFavoritesAdd.UseVisualStyleBackColor = true;
@@ -166,8 +158,7 @@
             this.favoritesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(826, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1239, 33);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -178,27 +169,27 @@
             this.selectProfileToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // newProfileToolStripMenuItem
             // 
             this.newProfileToolStripMenuItem.Name = "newProfileToolStripMenuItem";
-            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
             this.newProfileToolStripMenuItem.Text = "&New profile";
             this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
             // 
             // selectProfileToolStripMenuItem
             // 
             this.selectProfileToolStripMenuItem.Name = "selectProfileToolStripMenuItem";
-            this.selectProfileToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.selectProfileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
             this.selectProfileToolStripMenuItem.Text = "&Select profile";
             this.selectProfileToolStripMenuItem.Click += new System.EventHandler(this.selectProfileToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -208,20 +199,20 @@
             this.helpToolStripMenuItem,
             this.versionToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.aboutToolStripMenuItem.Text = "&About";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(172, 34);
             this.helpToolStripMenuItem.Text = "&Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(172, 34);
             this.versionToolStripMenuItem.Text = "&Version";
             this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
             // 
@@ -229,33 +220,33 @@
             // 
             this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1});
+            this.historyToolStripMenuItem.Enabled = false;
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
             this.historyToolStripMenuItem.Text = "&History";
             this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(57, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(267, 6);
             // 
             // favoritesToolStripMenuItem
             // 
             this.favoritesToolStripMenuItem.Name = "favoritesToolStripMenuItem";
-            this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
+            this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.favoritesToolStripMenuItem.Text = "&Favorites";
             this.favoritesToolStripMenuItem.Click += new System.EventHandler(this.favoritesToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 398);
+            this.ClientSize = new System.Drawing.Size(1239, 612);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "CSH Web Browser";
             this.panel1.ResumeLayout(false);
